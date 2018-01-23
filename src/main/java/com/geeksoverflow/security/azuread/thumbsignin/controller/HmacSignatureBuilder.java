@@ -391,9 +391,9 @@ public class HmacSignatureBuilder {
         //return signature;
     }
     
-    public static String createHmacSignature(String path, HttpURLConnection conn, String appId, String appSecret) {
+    public static String createHmacSignature(String path, HttpURLConnection conn, String appId, String appSecret, String scheme) {
         final HmacSignatureBuilder signatureBuilder = new HmacSignatureBuilder.Builder(appId, appSecret)
-                .scheme("http")
+                .scheme(scheme)
                 .httpMethod(HttpGet.METHOD_NAME)
                 .canonicalURI(path)
                 .headers(getCanonicalizeHeaders(conn))

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geeksoverflow.security</groupId>
-    <artifactId>spring-security-azure-ad-thumbsignin</artifactId>
+    <artifactId>azuread-ts-client-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -181,7 +181,7 @@
     </profiles>
 
     <build>
-        <finalName>spring-security-azure-ad-thumbsignin</finalName>
+        <finalName>azuread-ts-client-demo</finalName>
         <filters>
             <filter>profiles/${build.profile.id}/database.properties</filter>
             <filter>profiles/${build.profile.id}/azuread.properties</filter>
@@ -212,7 +212,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/spring-security-azure-ad-thumbsignin/WEB-INF/lib</outputDirectory>
+                            <outputDirectory>${project.build.directory}/azuread-ts-client-demo/WEB-INF/lib</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

@@ -46,14 +46,14 @@ public class ThumbsigninClientController {
     	try
     	{
     		path = (path.contains(REGISTER)) ? path + authDataHelper.getUserIdFromSession() : path;
-    		String urlStr = String.format("http://dev-api.thumbsignin.com:8012/ts-aad/secure%s",path);
+    		String urlStr = String.format("https://azuread-api-stage.thumbsignin.com/ts-aad/secure%s",path);
     		//String urlStr = String.format("http://52.38.227.15:8081/azuread-thumbsignin-integration-saas-1.0-SNAPSHOT/ts-aad/secure%s",path);
     		URL url = new URL(urlStr);
     		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     		conn.setRequestProperty("Content-Type", "application/json");
     		conn.setRequestProperty("Accept", "application/json");
     		conn.setRequestProperty(HmacSignatureBuilder.X_TS_DATE_HEADER, HmacSignatureBuilder.getTimeStamp());
-    		conn.setRequestProperty("Authorization", HmacSignatureBuilder.createHmacSignature(url.getPath(),conn, tsAppId, tsAppSecret));
+    		conn.setRequestProperty("Authorization", HmacSignatureBuilder.createHmacSignature(url.getPath(),conn, tsAppId, tsAppSecret, "https"));
     		
     		response = HttpClientHelper.getResponseStringFromConn(conn, true);
     	}
