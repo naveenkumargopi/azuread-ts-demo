@@ -1,0 +1,17 @@
+after_script:
+  - $HOME/azuread-demo-work/azuread-ts-cilent-demo-$CI_COMMIT_REF_NAME.sh
+
+stages:
+  - build
+
+build-faas-uaf:
+    stage: build
+    before_script:
+    script:
+      - mkdir -p $HOME/azuread-demo-work/build_$CI_COMMIT_REF_NAME
+      - cd $CI_PROJECT_DIR
+      - pwd
+      - ./mvn build  
+      - cp target/*.war $HOME/azuread-demo-work/build_$CI_COMMIT_REF_NAME/
+    only:
+      - master
