@@ -55,6 +55,9 @@ public class AzureADAuthenticationManager {
     private String clientId = "";
     private String clientSecret = "";
     private String tenant = "";
+    private static final String LOCALHOST = "localhost";
+    private static final String HTTP = "http";
+    private static final String HTTPS = "https";
     private String authority;
     private boolean uselocalDB;
 
@@ -164,6 +167,9 @@ public class AzureADAuthenticationManager {
         storeStateInSession(httpRequest.getSession(), state, nonce);
 
         String currentUri = httpRequest.getRequestURL().toString();
+        if (!currentUri.contains(LOCALHOST) && !currentUri.contains(HTTPS)) {
+        	currentUri = currentUri.replace(HTTP, HTTPS);
+        }
         throw new AzureADAuthenticationException(getRedirectUrl(currentUri, state, nonce));
     }
 
