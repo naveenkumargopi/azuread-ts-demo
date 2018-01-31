@@ -11,7 +11,7 @@ build-faas-uaf:
       - mkdir -p $HOME/azuread-demo-work/build_$CI_COMMIT_REF_NAME
       - cd $CI_PROJECT_DIR
       - pwd
-      - ./mvn build  
+      - mvn clean install  
       - cp target/*.war $HOME/azuread-demo-work/build_$CI_COMMIT_REF_NAME/
     only:
       - master
