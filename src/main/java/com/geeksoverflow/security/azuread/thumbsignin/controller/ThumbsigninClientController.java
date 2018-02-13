@@ -69,8 +69,6 @@ public class ThumbsigninClientController {
 	private String invokeTSAADGatewayAPI(String path, HttpServletResponse response) throws URISyntaxException, ClientProtocolException, IOException {
     	path = (path.contains(REGISTER)) ? path + authDataHelper.getUserIdFromSession() : path;
 		String urlStr = String.format("https://azuread-api-stage.thumbsignin.com/ts-aad/secure%s",path);
-		//String urlStr = String.format("http://52.38.227.15:8081/azuread-thumbsignin-integration-saas-1.0-SNAPSHOT/ts-aad/secure%s",path);
-		//String urlStr = String.format("https://api.thumbsignin.com/ts/secure%s",path);
     	//String urlStr = String.format("http://localhost:8012/ts-aad/secure%s",path);
 		URI uri = new URIBuilder(urlStr).build();		
 		HttpGet httpget = new HttpGet(uri);
