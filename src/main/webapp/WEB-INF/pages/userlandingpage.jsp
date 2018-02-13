@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Spring Security Social ThumbSignIn User Page.</title>
+    <script src="https://thumbsignin.com/thumbsign_widget.js"></script>
 </head>
 <body>
     <h2>${title}</h2><br/><br/>
@@ -28,11 +29,52 @@
  	</table>
  	<br>
     
+    <button class="ts-auth-button" id="tsBtn" onclick="register.open()" style="border: 1px solid rgb(72, 210, 160); background-color: rgb(72, 210, 160);">Register with Thumbsignin</button>
+    <script>
+        (function(){document.write("<style>#tsBtn{color:#fff;border-radius:2px;background-color:#cccccc;width:230px;height:40px;margin-top: 20px;margin-left: 35;outline:0;border:1px solid #cccccc;cursor:pointer;font-size:16px;padding-left:30px;text-transform:none;background-position: 5px;background-image:url('https://thumbsignin.com/styles/img/logoIcon.png');background-repeat:no-repeat}</style>");})();
+    </script>
 
     	<br/>
-    	<button class="ts-auth-button" id="tsBtn" data-action-url="register/" data-status-url="regStatus/">
-    	Register with Thumbsignin</button>
-    	<script>(function(){document.write("<style>#tsBtn{color:#fff;border-radius:2px;background-color:#48d2a0;width:230px;height:40px;outline:0;border:1px solid #48d2a0;cursor:pointer;font-size:16px;padding-left:30px;text-transform:none;background-position: 5px;background-image:url('https://thumbsignin.com/styles/img/logoIcon.png');background-repeat:no-repeat}</style>");var ts = document.createElement("script");ts.src = "https://thumbsignin.com/ts_widget.js";ts.async = true;ts.defer = true;document.head.appendChild(ts);})();</script>
+    	<div id="registerDiv"></div>
+    	
+
+		<script type="text/javascript">
+        thumbSignIn
+        .addConfig('REGISTER_WIDGET', {
+            actionUrl: "../services/register/",
+            statusUrl: "../services/regStatus/",
+            COMPLETED_SUCCESSFUL: "You have successfully logged in using your fingerprint",
+            DEEP_LINK: "Open in Thumbsignin app",
+            desktop: {
+                'intro-msg': "Scan the QR code above using the ThumbSignIn app on your phone to log in to your account.",
+                TIMEOUT: "Scan the QR code above using the ThumbSignIn app on your phone to log in to your account.",
+            },
+            mobile: {
+                'intro-msg': "",
+                TIMEOUT: "",
+            },
+            sms: {
+                playStoreURL: 'https://play.google.com/store/apps/details?id=com.pramati.thumbsignin.app',
+                appStoreURL: 'https://itunes.apple.com/in/app/thumbsignin/id1279260047',
+                smsContent: 'Please visit this link to download App'
+            }
+        });
+
+    thumbSignIn
+        .init({
+            name: 'register',
+            id: 'REGISTER_WIDGET',
+            rootID: 'registerDiv'
+        }).then(function () {
+        	register.registerEvent('SUCCESS', function (response) {
+                window.location.hash = '';
+                window.location.pathname = response.redirectUrl || "/";
+            }, window);
+        	register.close();
+        });
+    </script>
+
+</body>
 
 </body>
 </html>

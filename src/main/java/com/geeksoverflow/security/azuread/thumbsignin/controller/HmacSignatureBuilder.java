@@ -181,6 +181,7 @@ public class HmacSignatureBuilder {
 
             /* Step 3.2 Calculate the signature. */
             byte[] signature = Hmac(signatureKey, stringToSign);
+            //byte[] signature = Hmac(signatureKey, "abc");
 
             /* Step 3.2.1 Encode signature (byte[]) to Hex */
             return bytesToHex(signature);
@@ -391,13 +392,13 @@ public class HmacSignatureBuilder {
         //return signature;
     }
     
-    public static String createHmacSignature(String path, HttpURLConnection conn, String appId, String appSecret, String scheme) {
+    public static String createHmacSignature(String path, String signatureTimestamp, String appId, String appSecret) {
         final HmacSignatureBuilder signatureBuilder = new HmacSignatureBuilder.Builder(appId, appSecret)
-                .scheme(scheme)
+                .scheme("https")
                 .httpMethod(HttpGet.METHOD_NAME)
                 .canonicalURI(path)
-                .headers(getCanonicalizeHeaders(conn))
-                .date(conn.getRequestProperty(HmacSignatureBuilder.X_TS_DATE_HEADER))
+                //.headers(getCanonicalizeHeaders(conn))
+                .date(signatureTimestamp)
                 .build();
 
         String authHeader = signatureBuilder.sign();

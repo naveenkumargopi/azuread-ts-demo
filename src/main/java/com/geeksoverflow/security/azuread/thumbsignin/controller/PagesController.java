@@ -74,12 +74,12 @@ public class PagesController {
     @RequestMapping(value = {"/accessdenied"}, method = RequestMethod.GET)
     public ModelAndView accessDeniedPage() {
         ModelAndView model = new ModelAndView();
-        model.addObject("message", "Either username or password is incorrect.");
+        model.addObject("message", "Either your user credentials are incorrect or your account has been removed from Azure AD.");
         model.setViewName("accessdenied");
         return model;
     }
 
-    @RequestMapping(value = {"/userlandingpage"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/userlandingpage"}, method = RequestMethod. GET)
     public ModelAndView userPage(HttpServletRequest httpRequest) {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "User Landing Page");
@@ -94,6 +94,15 @@ public class PagesController {
         model.setViewName("userlandingpage");
         clientAccessToken = null;
         isUserAuthenticatedViaThumbsignin = false;
+        return model;
+    }
+    
+    @RequestMapping(value = {"/b2csuccesspage"}, method = RequestMethod. GET)
+    public ModelAndView b2csuccesspage(HttpServletRequest httpRequest) {
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "User Landing Page");
+        model.setViewName("b2csuccesspage");
+
         return model;
     }
     

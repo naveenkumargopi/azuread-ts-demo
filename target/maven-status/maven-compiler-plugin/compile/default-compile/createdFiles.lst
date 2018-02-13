@@ -24,6 +24,7 @@ com/geeksoverflow/security/azuread/thumbsignin/handler/AzureADAuthenticationSucc
 com/geeksoverflow/security/azuread/thumbsignin/controller/AuthDataHelper.class
 com/geeksoverflow/security/azuread/thumbsignin/service/LocalUserDetailsService.class
 com/geeksoverflow/security/azuread/thumbsignin/manager/AzureADAuthenticationManager.class
+com/geeksoverflow/security/azuread/thumbsignin/controller/ThumbsigninClientController$1.class
 com/geeksoverflow/security/azuread/thumbsignin/entrypoint/AuthenticationEntryPoint.class
 com/geeksoverflow/security/azuread/thumbsignin/model/AzureADClientProps.class
 com/geeksoverflow/security/azuread/thumbsignin/helper/AuthParameterNames.class

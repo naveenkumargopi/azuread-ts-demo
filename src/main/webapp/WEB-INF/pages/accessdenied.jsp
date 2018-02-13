@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2> Access Denied </h2>
-   <br/>Error Message : <br/>${message}<br/>
+   <br/>Error Message : <font color="red">${message}</font><br/>
 
     Click here for<a href="<c:url value="/services/login" />"> Login</a>
 </body>
