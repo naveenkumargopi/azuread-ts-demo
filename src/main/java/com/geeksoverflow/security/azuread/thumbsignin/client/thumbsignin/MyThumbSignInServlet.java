@@ -40,7 +40,6 @@ public class MyThumbSignInServlet extends ThumbSignInServlet {
 
     protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws ServletException, IOException
     {
-        int a=1;
         try {
             ThumbsignInRequest thumbsignInRequest = createThumbsignInRequest(servletRequest);
             ThumbsignInResponse thumbsignInResponse = thumbsignInClient.get(thumbsignInRequest);
